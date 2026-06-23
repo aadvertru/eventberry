@@ -9,6 +9,8 @@
   const closeContactButtons = document.querySelectorAll("[data-close-contact]");
   const contactForm = document.querySelector("[data-contact-form]");
   const formStatus = document.querySelector("[data-form-status]");
+  const floatingContact = document.querySelector("[data-floating-contact]");
+  const floatingContactTrigger = document.querySelector("[data-floating-contact-trigger]");
 
   const workSlides = [
     {
@@ -84,6 +86,18 @@
     if (lastFocusedElement && typeof lastFocusedElement.focus === "function") {
       lastFocusedElement.focus();
     }
+  }
+
+  function closeFloatingContact() {
+    if (!floatingContact || !floatingContactTrigger) return;
+    floatingContact.classList.remove("is-open");
+    floatingContactTrigger.setAttribute("aria-expanded", "false");
+  }
+
+  function toggleFloatingContact() {
+    if (!floatingContact || !floatingContactTrigger) return;
+    const isOpen = floatingContact.classList.toggle("is-open");
+    floatingContactTrigger.setAttribute("aria-expanded", String(isOpen));
   }
 
   function setupReveal() {
@@ -239,7 +253,18 @@
     if (event.key === "Escape") {
       closeContactModal();
       closeNav();
+      closeFloatingContact();
     }
+  });
+
+  floatingContactTrigger && floatingContactTrigger.addEventListener("click", (event) => {
+    event.stopPropagation();
+    toggleFloatingContact();
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!floatingContact || !floatingContact.classList.contains("is-open")) return;
+    if (!floatingContact.contains(event.target)) closeFloatingContact();
   });
 
   contactForm && contactForm.addEventListener("submit", submitContactForm);
