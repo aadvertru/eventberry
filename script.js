@@ -215,6 +215,42 @@
     }, 4500);
   }
 
+  function setupAboutFlow() {
+    const section = document.querySelector("[data-about-flow-section]");
+    const stage = document.querySelector("[data-about-flow]");
+    const modules = Array.from(document.querySelectorAll("[data-about-module]"));
+    if (!section || !stage || !modules.length) return;
+
+    let ticking = false;
+
+    function clamp(value, min, max) {
+      return Math.min(Math.max(value, min), max);
+    }
+
+    function update() {
+      ticking = false;
+      const sectionTop = section.offsetTop;
+      const scrollDistance = Math.max(section.offsetHeight - window.innerHeight, 1);
+      const progress = clamp((window.scrollY - sectionTop) / scrollDistance, 0, 1);
+      const visibleIndex = clamp(Math.floor(progress * modules.length), 0, modules.length - 1);
+
+      stage.dataset.step = String(visibleIndex);
+      modules.forEach((module, index) => {
+        module.classList.toggle("is-visible", index <= visibleIndex);
+      });
+    }
+
+    function requestUpdate() {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(update);
+    }
+
+    update();
+    window.addEventListener("scroll", requestUpdate, { passive: true });
+    window.addEventListener("resize", requestUpdate);
+  }
+
   function submitContactForm(event) {
     event.preventDefault();
     if (!contactForm || !formStatus) return;
@@ -273,4 +309,5 @@
   setupWorkGallery();
   setupHeroBackground();
   setupWhyAnimation();
+  setupAboutFlow();
 })();
