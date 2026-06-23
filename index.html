@@ -8,13 +8,20 @@
       name="description"
       content="EventBerry Agency creates conceptual, technologically advanced and emotionally charged events for brands in Europe and beyond."
     >
+    <link rel="icon" href="assets/favicons/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
+    <meta name="theme-color" content="#0b0025">
+    <meta name="msapplication-TileColor" content="#0b0025">
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
     <header class="site-header" data-header>
       <div class="header-inner">
         <a class="brand" href="#top" aria-label="EventBerry Agency home">
-          <img src="assets/images/logo-agency-purple.png" alt="EventBerry Agency">
+          <img src="assets/images/logo-ebt-purp.png" alt="EventBerry Team">
         </a>
 
         <button class="nav-toggle" type="button" aria-controls="site-nav" aria-expanded="false" data-nav-toggle>
@@ -130,14 +137,10 @@
             <div class="work-photo">
               <img src="assets/images/work-2.jpg" alt="Euro Forum stage and auditorium" data-work-image>
               <div class="work-caption" data-work-caption>Euro Forum</div>
+              <button class="work-arrow work-arrow-prev" type="button" data-work-prev aria-label="Previous project">←</button>
+              <button class="work-arrow work-arrow-next" type="button" data-work-next aria-label="Next project">→</button>
             </div>
-            <div class="work-thumbs" aria-label="Event photo slideshow controls">
-              <button type="button" class="active" data-work-thumb="0" aria-label="Show Euro Forum photo"></button>
-              <button type="button" data-work-thumb="1" aria-label="Show corporate performance photo"></button>
-              <button type="button" data-work-thumb="2" aria-label="Show stage production photo"></button>
-              <button type="button" data-work-thumb="3" aria-label="Show gala show photo"></button>
-            </div>
-            <p>event direction / show production / emotion</p>
+            <p class="work-description" data-work-description>Euro Forum</p>
           </div>
         </div>
       </section>
@@ -151,36 +154,48 @@
           </div>
 
           <div class="team-grid reveal">
-            <article class="team-card">
+            <article class="team-card" tabindex="0" aria-describedby="team-bio-julia">
               <img src="assets/images/team-julia.jpg" alt="Julia Tibold">
               <div>
                 <h3>Julia Tibold</h3>
                 <p>Creative & Stage Director</p>
                 <span>wow-berry effect</span>
               </div>
+              <div class="team-bio" id="team-bio-julia">
+                Julia turns complex brand stories into vivid stage concepts. She shapes the creative idea, script rhythm and show direction so every moment feels intentional.
+              </div>
             </article>
-            <article class="team-card">
+            <article class="team-card" tabindex="0" aria-describedby="team-bio-natalia">
               <img src="assets/images/team-natalia.jpg" alt="Natalia Gremitskaya">
               <div>
                 <h3>Natalia Gremitskaya</h3>
                 <p>Client Service Director</p>
                 <span>best berries found</span>
               </div>
+              <div class="team-bio" id="team-bio-natalia">
+                Natalia keeps the client journey clear, calm and precise from first brief to final applause. She aligns expectations, timing and communication across every stakeholder.
+              </div>
             </article>
-            <article class="team-card">
+            <article class="team-card" tabindex="0" aria-describedby="team-bio-valeria">
               <img src="assets/images/team-valeria.jpg" alt="Valeria Pustynnikova">
               <div>
                 <h3>Valeria Pustynnikova</h3>
                 <p>Event Director</p>
                 <span>perfect order</span>
               </div>
+              <div class="team-bio" id="team-bio-valeria">
+                Valeria leads the event flow from planning grid to live execution. She connects teams, venues, contractors and guests into one controlled production system.
+              </div>
             </article>
-            <article class="team-card">
+            <article class="team-card" tabindex="0" aria-describedby="team-bio-ilia">
               <img src="assets/images/team-ilia.jpg" alt="Ilia Timoshkov">
               <div>
                 <h3>Ilia Timoshkov</h3>
                 <p>Technical Director</p>
                 <span>powerful tech jam</span>
+              </div>
+              <div class="team-bio" id="team-bio-ilia">
+                Ilia designs the technical backbone of the experience: light, sound, screens, streaming and show control. He makes ambitious ideas work reliably on site.
               </div>
             </article>
           </div>
@@ -210,7 +225,7 @@
         <div class="section-inner">
           <div class="contact-panel reveal">
             <div class="contact-media">
-              <img class="contact-logo" src="assets/images/logo-agency-pink.png" alt="EventBerry Agency">
+              <img class="contact-logo" src="assets/images/logo-ebt-purp.png" alt="EventBerry Team">
               <div class="contact-shots">
                 <img src="assets/images/work-1.jpg" alt="EventBerry show lighting">
                 <img src="assets/images/work-3.jpg" alt="EventBerry stage production">

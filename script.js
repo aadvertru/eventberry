@@ -14,22 +14,26 @@
     {
       src: "assets/images/work-2.jpg",
       alt: "Euro Forum stage and auditorium",
-      caption: "Euro Forum"
+      caption: "Euro Forum",
+      description: "Euro Forum"
     },
     {
       src: "assets/images/work-1.jpg",
       alt: "Corporate event with red stage lighting",
-      caption: "Corporate show"
+      caption: "Corporate show",
+      description: "Corporate show"
     },
     {
       src: "assets/images/work-3.jpg",
       alt: "Dark stage with light beams and performers",
-      caption: "Stage production"
+      caption: "Stage production",
+      description: "Stage production"
     },
     {
       src: "assets/images/work-4.jpg",
       alt: "Live performance with flags and stage lights",
-      caption: "Show performance"
+      caption: "Show performance",
+      description: "Show performance"
     }
   ];
 
@@ -107,8 +111,10 @@
   function setupWorkGallery() {
     const image = document.querySelector("[data-work-image]");
     const caption = document.querySelector("[data-work-caption]");
-    const thumbs = Array.from(document.querySelectorAll("[data-work-thumb]"));
-    if (!image || !caption || !thumbs.length) return;
+    const description = document.querySelector("[data-work-description]");
+    const prevButton = document.querySelector("[data-work-prev]");
+    const nextButton = document.querySelector("[data-work-next]");
+    if (!image || !caption || !description || !prevButton || !nextButton) return;
 
     let index = 0;
     let timer = null;
@@ -121,9 +127,7 @@
         image.src = slide.src;
         image.alt = slide.alt;
         caption.textContent = slide.caption;
-        thumbs.forEach((thumb, thumbIndex) => {
-          thumb.classList.toggle("active", thumbIndex === index);
-        });
+        description.textContent = slide.description;
         image.classList.remove("is-switching");
       }, 140);
     }
@@ -140,11 +144,14 @@
       }
     }
 
-    thumbs.forEach((thumb) => {
-      thumb.addEventListener("click", () => {
-        render(Number(thumb.dataset.workThumb));
-        start();
-      });
+    prevButton.addEventListener("click", () => {
+      render(index - 1);
+      start();
+    });
+
+    nextButton.addEventListener("click", () => {
+      render(index + 1);
+      start();
     });
 
     start();
